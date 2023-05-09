@@ -10,15 +10,6 @@ import 'models/customer.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -67,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return ListView.builder(
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return SlidableCustomerCard(snapshot.data![index]);
+                  return slidableCustomerCard(snapshot.data![index]);
                 },
               );
             } else {
@@ -84,12 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget SlidableCustomerCard(Customer customer) {
+  Widget slidableCustomerCard(Customer customer) {
     return Slidable(
       startActionPane: ActionPane(
         motion: ScrollMotion(),
         children: [
-          // A SlidableAction can have an icon and/or a label.
           SlidableAction(
             onPressed: (context) => {UrlLauncherUtils.mailTo(customer.PrimaryContactEmail)},
             backgroundColor: Colors.indigo,
@@ -106,11 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],),
 
-      child: CustomerCard(customer),
+      child: customerCard(customer),
     );
   }
 
-  Card CustomerCard(Customer customer) {
+  Card customerCard(Customer customer) {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.person),

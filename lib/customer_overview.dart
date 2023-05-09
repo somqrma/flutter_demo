@@ -161,20 +161,21 @@ class CustomerOverview extends StatelessWidget {
     );
   }
 
-  GestureDetector customButton(Function () onTap, IconData icon, {Color color = Colors.white}) {
+  GestureDetector customButton(Function() onTap, IconData icon,
+      {Color color = Colors.white}) {
     return GestureDetector(
-                    onTap: onTap,
-                    child: ClipOval(
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        color: color,
-                        child: Icon(
-                          icon,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  );
+      onTap: onTap,
+      child: ClipOval(
+        child: Container(
+          height: 40,
+          width: 40,
+          color: color,
+          child: Icon(
+            icon,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 }
