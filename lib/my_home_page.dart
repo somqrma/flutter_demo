@@ -81,21 +81,23 @@ class _MyHomePageState extends State<MyHomePage> {
         motion: ScrollMotion(),
         children: [
           SlidableAction(
-            onPressed: (context) => {UrlLauncherUtils.mailTo(customer.PrimaryContactEmail)},
+            onPressed: (context) =>
+                {UrlLauncherUtils.mailTo(customer.PrimaryContactEmail)},
             backgroundColor: Colors.indigo,
             foregroundColor: Colors.white,
             icon: Icons.mail,
             label: 'Mail',
           ),
           SlidableAction(
-            onPressed: (context) => {UrlLauncherUtils.telephoneCall(customer.PrimaryContactPhone)},
+            onPressed: (context) =>
+                {UrlLauncherUtils.telephoneCall(customer.PrimaryContactPhone)},
             backgroundColor: const Color(0xFF21B7CA),
             foregroundColor: Colors.white,
             icon: Icons.phone,
             label: 'Phone',
           ),
-        ],),
-
+        ],
+      ),
       child: customerCard(customer),
     );
   }
