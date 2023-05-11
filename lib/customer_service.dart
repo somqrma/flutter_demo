@@ -15,8 +15,7 @@ class CustomerService {
   }
 
   static Future<List<Customer>> httpGetResponse(String apiURI) async {
-    retrieveCookie();
-    final http.Response response = await http.get(Uri.parse(serverAddress + apiURI), headers: retrieveCookie());
+    final http.Response response = await http.get(Uri.parse(serverAddress + apiURI), headers: {"Cookie": cookie});
     if (response.statusCode == 200) {
       var parsedResponse = ApiResponse.fromJson(json.decode(response.body));
       final List<Customer> customers = parsedResponse.value.map((personJson) => Customer.fromJson(personJson)).toList();
@@ -26,5 +25,4 @@ class CustomerService {
     }
   }
 
-  static Map<String, String> retrieveCookie() => {"Cookie": cookie};
 }
