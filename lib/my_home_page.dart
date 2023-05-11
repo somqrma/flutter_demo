@@ -23,17 +23,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _customerFuture = fetchCustomers();
+    _load();
   }
 
-  void _reload() {
+  void _load() {
     setState(() {
-      _customerFuture = fetchCustomers();
+      _customerFuture = CustomerService.getCustomers();
     });
-  }
-
-  Future<List<Customer>> fetchCustomers() async {
-    return await CustomerService.getCustomers();
   }
 
   @override
@@ -68,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _reload,
+        onPressed: _load,
         tooltip: 'Reload',
         child: const Icon(Icons.refresh),
       ), // This trailing comma makes auto-formatting nicer for build methods.
