@@ -15,7 +15,6 @@ class CustomerOverview extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(customer.OrganizationName),
-          leading: const BackButton(),
         ),
         body: Container(
             padding: const EdgeInsets.all(16.0),
