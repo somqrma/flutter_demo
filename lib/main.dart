@@ -22,7 +22,7 @@ class MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           applyElevationOverlayColor: true,
-          textTheme: const TextTheme(bodySmall: TextStyle(color: Colors.red))),
+          ),
       home: const MyHomePage(title: 'My Customers'),
     );
   }
