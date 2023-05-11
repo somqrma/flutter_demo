@@ -29,7 +29,6 @@ class CustomerOverview extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
                 const SizedBox(height: 16.0),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +90,6 @@ class CustomerOverview extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-
                         ],
                       ),
                     ),
@@ -124,7 +122,6 @@ class CustomerOverview extends StatelessWidget {
                       ),
                     ),
                 ],)),
-
               ]),
                 const SizedBox(height: 16.0),
                 SizedBox(
