@@ -8,9 +8,11 @@ import 'customer_overview.dart';
 import 'models/customer.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
+  MyHomePage({Key? key, required this.title, required void Function() toggleThemeMode}) : super(key: key) {
+    _toggleThemeMode = toggleThemeMode;
+  }
   final String title;
+  late final Function _toggleThemeMode;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -19,6 +21,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late CustomerService service = CustomerService();
   late Future<List<Customer>> _customerFuture;
+  late bool _isOnDarkTheme = false;
 
   @override
   void initState() {
@@ -42,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+          leading: Switch(onChanged: toggleDarkTheme, value: _isOnDarkTheme,)
+
       ),
       body: Center(
         child: FutureBuilder<List<Customer>>(
@@ -62,6 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _load,
+        tooltip: 'Reload',
+        child: const Icon(Icons.refresh),
       ),
     );
   }
@@ -106,6 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
+  }
+
+  void toggleDarkTheme(bool newValue) {
+    setState(() {
+      widget._toggleThemeMode();
+      _isOnDarkTheme = newValue;
+    });
   }
 
   void navigateToCustomerOverview(Customer customer) {

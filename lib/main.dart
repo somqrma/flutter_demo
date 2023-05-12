@@ -13,16 +13,29 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      themeMode: _themeMode,
+      darkTheme: ThemeData.dark(),
       theme: ThemeData(
           primarySwatch: Colors.blue,
           applyElevationOverlayColor: true,
           ),
-      home: const MyHomePage(title: 'My Customers'),
+      home: MyHomePage(title: 'My Customers', toggleThemeMode: _toggleThemeMode),
     );
+  }
+
+  void _toggleThemeMode() {
+    setState(() {
+      if (_themeMode == ThemeMode.light) {
+        _themeMode = ThemeMode.dark;
+      } else {
+        _themeMode = ThemeMode.light;
+      }
+    });
   }
 }
